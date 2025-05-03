@@ -132,3 +132,18 @@ function highlightActiveRoom(room) {
 		}
 	});
 }
+
+// On page load
+document.addEventListener('DOMContentLoaded', () => {
+	const themeSelect = document.getElementById('theme-select');
+	// 1. Load saved theme or fallback to “light”
+	const saved = localStorage.getItem('theme') || 'light';
+	document.documentElement.setAttribute('data-theme', saved);
+	themeSelect.value = saved;
+	// 2. Listen for changes
+	themeSelect.addEventListener('change', () => {
+		const theme = themeSelect.value;
+		document.documentElement.setAttribute('data-theme', theme);
+		localStorage.setItem('theme', theme);
+	});
+});

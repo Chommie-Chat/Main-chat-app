@@ -1,29 +1,113 @@
-:root {
-    --primary:#f80000;
-    --secondary: #f84600;
-    --accent: #ff5100;
-    --light: #ecf0f1;
-    --success: #2ecc71;
-    --warning: #f1c40f;
-    --danger: #e74c3c;
-    --text-dark: #2c3e50;
-    --text-light: #ffffff;
-    --shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* Default theme */
+[data-theme="default"]:root {
+    --bg-body: #ff0000; 
+    --h2-default: #ffffff;
+    --h2-text: #000000;            
+    --text-default: #2c3e50;         
+    --chat-bg: #ffffff;
+    --bubble-sender-bg: #BC1616; 
+    --bubble-sender-text: #ffffff; 
+    --bubble-receiver-bg: #FF721F;      
+    --bubble-receiver-text: #000000;
+    --button-send-bg: #FF6600;      
+    --button-send-hover: #ff0000; 
+    --button-text: #000000;
+    --system-message: #fff3e0;
+    --system-message-text: #FF721F;    
+    --sidebar-bg: #ffffff;        
+    --sidebar-text: #000000;
+    --sidebar-active-bg: #FF6600;   
+    --sidebar-active-text: #000000;
+    --input-area: #F4F4F4;
+    --input-text: #000000;
 }
+
+/* Lilac theme */
+[data-theme="lilac"] {
+    --bg-body: #33013F;
+    --h2-default: #FAD9FD;
+    --h2-text: #33013F;               
+    --text-default: #FAD9FD;            
+    --chat-bg: #FAD9FD;                 
+    --bubble-sender-bg: #33013F;        
+    --bubble-sender-text: #FFFFFF;
+    --bubble-receiver-bg: #F2B5D4;      
+    --bubble-receiver-text: #33013F;
+    --button-send-bg: #630E69;          
+    --button-send-hover: #33013F;   
+    --button-text: #ffffff;
+    --system-message: #630e69;
+    --system-message-text: #ffffff;
+    --sidebar-bg: #FAD9FD;         
+    --sidebar-text: #33013F;
+    --sidebar-active-bg: #630e69;  
+    --sidebar-active-text: #FAD9FD;
+    --input-area: #F2B5D4;
+    --input-text: #33013F;
+}
+
+[data-theme="midnight"] {
+    --bg-body: #78C0E0; 
+    --h2-default: #04052E;  
+    --h2-text: #78C0E0;                
+    --text-default: #000000;            
+    --chat-bg: #04052E;   
+    --main-chat-bg: #04052E;            
+    --bubble-sender-bg: #78C0E0;        
+    --bubble-sender-text: #000000;
+    --bubble-receiver-bg: #429ACD;      
+    --bubble-receiver-text: #000000;
+    --button-send-bg: #FFFFFF;          
+    --button-send-hover: #78C0E0;
+    --button-text: #000000;
+    --system-message: #429ACD;
+    --system-message-text: #04052E;    
+    --sidebar-bg: #04052E;         
+    --sidebar-text: #78C0E0;
+    --sidebar-active-bg: #FFFFFF;    
+    --sidebar-active-text: #04052E;
+    --input-area: #150578;
+    --input-text: #ffffff;
+}
+
+[data-theme="focus"] {
+    --bg-body: #7B4000; 
+    --h2-default: #FFA237;  
+    --h2-text: #000000;                
+    --text-default: #000000;            
+    --chat-bg: #FFA237;   
+    --main-chat-bg: #04052E;            
+    --bubble-sender-bg: #219EBC;        
+    --bubble-sender-text: #000000;
+    --bubble-receiver-bg: #16FF03;      
+    --bubble-receiver-text: #000000;
+    --button-send-bg: #7B4000;          
+    --button-send-hover: #FFE707;
+    --button-text: #000000;
+    --system-message: #FFE707;
+    --system-message-text: #04052E;    
+    --sidebar-bg: #FFA237;         
+    --sidebar-text: #000000;
+    --sidebar-active-bg: #7B4000;    
+    --sidebar-active-text: #04052E;
+    --input-area: #FFE707;
+    --input-text: #000000;
+}
+
 
 body { 
     margin: 0; 
     padding: 0; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ff0000;
-    color: var(--text-dark);
+    background-color: var(--bg-body);
+    color: var(--text-default);
 }
 
 h2 {
-    color: var(--primary);
+    color: var(--h2-text);
     padding: 20px;
     margin: 0;
-    background: white;
+    background: var(--h2-default);
     box-shadow: var(--shadow);
 }
 
@@ -36,7 +120,8 @@ h2 {
 
 .sidebar { 
     width: 250px;
-    background: white;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
     border-radius: 10px;
     box-shadow: var(--shadow);
     display: flex;
@@ -60,15 +145,17 @@ h2 {
     border-radius: 5px;
     transition: all 0.3s ease;
     cursor: pointer;
+    color: var(--sidebar-text);
 }
 
 .room-item:hover, .user-item:hover {
-    background: var(--light);
+    background: var(--sidebar-active-bg);
+    color: var(--sidebar-active-text);
     transform: translateX(5px);
 }
 
 .active-room { 
-    background: var(--accent) !important;
+    background: var(--sidebar-active-bg) !important;
     color: var(--text-light);
     font-weight: 500;
 }
@@ -77,7 +164,7 @@ h2 {
     flex-grow: 1; 
     display: flex; 
     flex-direction: column;
-    background: white;
+    background: var(--chat-bg);
     border-radius: 10px;
     box-shadow: var(--shadow);
     overflow: hidden;
@@ -87,7 +174,7 @@ h2 {
     flex-grow: 1; 
     padding: 20px;
     overflow-y: auto;
-    background: white;
+    background: var(--chat-bg);
 }
 
 .message { 
@@ -100,21 +187,22 @@ h2 {
 }
 
 .message.own { 
-    background: var(--accent);
-    color: var(--text-light);
+    background: var(--bubble-sender-bg);
+    color: var(--bubble-sender-text);
     margin-left: auto;
     border-bottom-right-radius: 2px;
 }
 
 .message.other { 
-    background: var(--light);
+    background: var(--bubble-receiver-bg);
+    color: var(--bubble-receiver-text);
     margin-right: auto;
     border-bottom-left-radius: 2px;
 }
 
 .message.system { 
-    background: #fff3e0;
-    color: var(--secondary);
+    background: var(--system-message);
+    color: var(--system-message-text);
     font-style: italic;
     max-width: 100%;
     text-align: center;
@@ -131,7 +219,8 @@ h2 {
     display: flex; 
     gap: 10px; 
     padding: 20px;
-    background: var(--light);
+    background: var(--input-area);
+    color: var(--input-text);
     border-top: 1px solid rgba(0,0,0,0.1);
 }
 
@@ -154,15 +243,15 @@ button {
     padding: 12px 25px;
     border: none;
     border-radius: 25px;
-    background: var(--accent);
-    color: white;
+    background: var(--button-send-bg);
+    color: var(--button-text);
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
 }
 
 button:hover {
-    background: #ff0000;
+    background: var(--button-send-hover);
     transform: translateY(-1px);
 }
 
